@@ -107,7 +107,15 @@ cd $working_dir
 notify "Copying dotfiles"
 echo "..."
 
-for x in $(find ./ -regex "\.//\.[^\.g][^/]*"); do
+case "$working_dir" in
+    *"dot-files"*)
+        ;;
+    *)
+        err "Cloning dot-files git repo"
+        git clone git@github.com:bri-bri/dot-files.git && cd dot-files
+esac
+
+for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
     if [ "${x:0:3}" == ".//" ]; then
         dotfile=${x:3}
     else
@@ -129,6 +137,8 @@ for x in $(find ./ -regex "\.//\.[^\.g][^/]*"); do
     fi
 done
 
+success "You have access to Github!\n"
+
 #----------------------------------
 # Homebrew
 #----------------------------------
@@ -148,6 +158,7 @@ echo "..."
 brew install wget
 brew install ngrep
 brew install htop
+brew install s3cmd
 
 success "Done installing utilities!\n"
 
