@@ -20,6 +20,8 @@ success() {
 # Git & Github Setup
 #----------------------------------
 
+working_dir="$(pwd)"
+
 notify "Checking git config."
 echo "..."
 
@@ -96,32 +98,36 @@ case "$github_response" in
         echo -e "$github_response\n"
 esac
 
-cd ~/
+cd $working_dir
 
 #----------------------------------
 # Copying Dotfiles
 #----------------------------------
-find ./ -regex "\.//\.[^\.g/]*" | while read x; do
-    if [ ${$x:0:3} == ".//" ]; then
-        dotfile=${$x:3}
+
+notify "Copying dotfiles"
+echo "..."
+
+for x in $(find ./ -regex "\.//\.[^\.g][^/]*"); do
+    if [ "${x:0:3}" == ".//" ]; then
+        dotfile=${x:3}
     else
         dotfile=$x
     fi
     
     replace_bool=True
-    if [ -f ~/$x ]; then
-        err "$x exists, do you want to replace it?"
+    if [ -f ~/$dotfile ]; then
+        err "$dotfile exists, do you want to replace it?"
         echo -n "(Y/n) > "
         read confirm
-        if [ $confirm != "y" ] && [ $confirm != "Y" ]; then
+        if [ ! $confirm == "y" ] && [ ! $confirm == "Y" ]; then
             replace_bool=False
         fi
     fi
 
-    if replace_bool; then
+    if $replace_bool; then
         scp -r ./$dotfile ~/
     fi
-
+done
 
 #----------------------------------
 # Homebrew
