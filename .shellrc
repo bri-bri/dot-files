@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# -----------------------------------------------------------------
+# SHELL CONFIGURATIONS
+# -----------------------------------------------------------------
+
+export EDITOR="vim"
+
+export CLICOLOR="xterm-color"
+export DISPLAY=:0.0
+export LC_ALL="en_US.UTF-8"
+
+# -----------------------------------------------------------------
+# ALIASES
+# -----------------------------------------------------------------
+
+# Add default tags to ls
+export LS_DEFAULTS="-ahBG"
+
+# Test and alias ls
+test -n "$LS_DEFAULTS" &&
+    alias ls="command ls $LS_DEFAULTS"
+
+alias ll=`ls -l`
+
+# -----------------------------------------------------------------
+# SOURCING LOCAL .SHELLRC
+# -----------------------------------------------------------------
+
+if [ -f ~/.shellrc.local ]; then
+    source ~/.shellrc.local
+fi
