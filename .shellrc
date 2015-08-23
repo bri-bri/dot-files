@@ -23,6 +23,29 @@ test -n "$LS_DEFAULTS" &&
 
 alias ll="command ls -l $LS_DEFAULTS"
 
+if [ -f ~/.dotfiles_config ]; then
+    source ~/.dotfiles_config
+fi
+
+# -----------------------------------------------------------------
+# AUTOMATED DOTFILES VERSION CONTROL
+# -----------------------------------------------------------------
+
+if ! [ -z $DOTFILES_CONFIG_DIR ]; then
+    cd $DOTFILES_CONFIG_DIR
+    if ! [ -z "$(git status --porcelain)" ]; then
+        git diff
+        echo "Uncommitted dotfile changes detected (shown above); commit now?"
+        echo -n "(Y / n) > "
+        read confirm
+        if [ $confirm == "Y" ] || [ $confirm == "y" ]; then
+            git add .
+            git commit -m "auto update"
+            git push origin master
+        fi
+    fi
+fi
+
 # -----------------------------------------------------------------
 # SOURCING LOCAL .SHELLRC
 # -----------------------------------------------------------------

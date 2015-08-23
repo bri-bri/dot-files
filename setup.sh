@@ -170,6 +170,7 @@ for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
     fi
 done
 
+echo "export DOTFILES_CONFIG_DIR=$(pwd)" > ~/.dotfiles_config
 success "Dotfiles copied!\n"
 
 #----------------------------------
