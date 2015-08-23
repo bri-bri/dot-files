@@ -159,6 +159,7 @@ for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
                 rm -r $XDG_CONFIG_HOME
                 ln -sf "$(pwd)/$dotfile" "$XDG_CONFIG_HOME"
             fi
+            echo "export DOTFILES_CONFIG_DIR=$(pwd)" > ~/.dotfiles_config
         else
             scp -r "./$dotfile" ~/
             if ! [ -z $XDG_CONFIG_HOME ] && [ "${dotfile:0:7}" == ".config" ]; then
@@ -170,7 +171,6 @@ for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
     fi
 done
 
-echo "export DOTFILES_CONFIG_DIR=$(pwd)" > ~/.dotfiles_config
 success "Dotfiles copied!\n"
 
 #----------------------------------
