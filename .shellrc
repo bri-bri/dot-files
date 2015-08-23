@@ -67,9 +67,6 @@ if ! [ -z $DOTFILES_CONFIG_DIR ]; then
             git commit -m "auto update"
             git push origin master
         fi
-    else
-        echo "Updating dotfiles..."
-        git pull
     fi
 fi
 
