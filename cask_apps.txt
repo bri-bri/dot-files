@@ -1,9 +1,11 @@
 google-chrome
 sublime-text
+hipchat
+google-drive
+google-hangouts
 dropbox
 intellij-idea-bundled-jdk
 pycharm-bundled-jdk
 spotify
 evernote
 skitch
-skype
