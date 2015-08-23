@@ -107,6 +107,18 @@ cd $working_dir
 notify "Copying dotfiles"
 echo "..."
 
+notify "Symlink dotfiles to the current repo?"
+echo -n "(Y-Symlink, n-copy) > "
+read should_symlink
+
+if [ ! $should_symlink == "y" ] && [ ! $should_symlink == "Y" ]; then
+    should_symlink=False
+else
+    should_symlink=True
+fi
+
+mkdir -p ~/old_dotfiles
+
 case "$working_dir" in
     *"dot-files"*)
         ;;
@@ -122,22 +134,43 @@ for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
         dotfile=$x
     fi
     
-    replace_bool=True
-    if [ -f ~/$dotfile ]; then
+    should_replace=True
+    file_exists=False
+    if [ -f ~/$dotfile ] || [ -d ~/$dotfile ]; then
+        file_exists=True
         err "$dotfile exists, do you want to replace it?"
         echo -n "(Y/n) > "
         read confirm
         if [ ! $confirm == "y" ] && [ ! $confirm == "Y" ]; then
-            replace_bool=False
+            should_replace=False
         fi
     fi
 
-    if $replace_bool; then
-        scp -r ./$dotfile ~/
+    if $should_replace; then
+        if $file_exists; then
+            if ! [ -L ~/$dotfile ]; then
+                scp -r ~/$dotfile ~/old_dotfiles/
+            fi
+            rm -r ~/$dotfile
+        fi
+        if $should_symlink; then
+            ln -sf "$(pwd)/$dotfile" "$HOME/$dotfile"
+            if ! [ -z $XDG_CONFIG_HOME ] && [ "${dotfile:0:7}" == ".config" ]; then
+                rm -r $XDG_CONFIG_HOME
+                ln -sf "$(pwd)/$dotfile" "$XDG_CONFIG_HOME"
+            fi
+        else
+            scp -r "./$dotfile" ~/
+            if ! [ -z $XDG_CONFIG_HOME ] && [ "${dotfile:0:7}" == ".config" ]; then
+                rm -r $XDG_CONFIG_HOME
+                mkdir -p $XDG_CONFIG_HOME
+                scp -r ./$dotfile/* "$XDG_CONFIG_HOME/"
+            fi
+        fi
     fi
 done
 
-success "You have access to Github!\n"
+success "Dotfiles copied!\n"
 
 #----------------------------------
 # Homebrew

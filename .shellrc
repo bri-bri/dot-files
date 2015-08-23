@@ -21,7 +21,7 @@ export LS_DEFAULTS="-ahBG"
 test -n "$LS_DEFAULTS" &&
     alias ls="command ls $LS_DEFAULTS"
 
-alias ll=`ls -l`
+alias ll="command ls -l $LS_DEFAULTS"
 
 # -----------------------------------------------------------------
 # SOURCING LOCAL .SHELLRC

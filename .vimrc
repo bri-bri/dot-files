@@ -21,6 +21,11 @@ set gdefault
 syntax on
 filetype plugin indent on
 
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
+
 " Enable display options
 colorscheme sourcerer
 set hlsearch
@@ -29,3 +34,5 @@ set hlsearch
 highlight Normal ctermfg=grey ctermbg=black "This has to come after syntax on
 
 nnoremap <Enter> o<ESC>
+nnoremap <S-k> <PageUp><ESC>
+nnoremap <S-j> <PageDown><ESC>
