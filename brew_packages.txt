@@ -1,0 +1,5 @@
+wget
+ngrep
+htop
+s3cmd
+jq

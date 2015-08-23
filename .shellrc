@@ -28,13 +28,37 @@ if [ -f ~/.dotfiles_config ]; then
 fi
 
 # -----------------------------------------------------------------
+# CAPTURE BREW AND PYTHON INSTALLS TO SAVE
+# -----------------------------------------------------------------
+
+brew() {
+    if ! [ -z $DOTFILES_CONFIG_DIR ]; then
+        if [ $1 == "install" ]; then
+            echo $2 >> $DOTFILES_CONFIG_DIR/brew_packages.txt
+        elif [ $1 == "cask" ] && [ $2 == "install" ]; then
+            echo $3 >> $DOTFILES_CONFIG_DIR/cask_apps.txt
+        fi
+    fi
+    command brew $@
+}
+
+pip() {
+    if ! [ -z $DOTFILES_CONFIG_DIR ]; then
+        if [ $1 == "install" ]; then
+            echo $2 >> $DOTFILES_CONFIG_DIR/python_packages.txt
+        fi
+    fi
+    command pip $@
+}
+
+# -----------------------------------------------------------------
 # AUTOMATED DOTFILES VERSION CONTROL
 # -----------------------------------------------------------------
 
 if ! [ -z $DOTFILES_CONFIG_DIR ]; then
     cd $DOTFILES_CONFIG_DIR
     if ! [ -z "$(git status --porcelain)" ]; then
-        git diff
+        git status --porcelain
         echo "Uncommitted dotfile changes detected (shown above); commit now?"
         echo -n "(Y / n) > "
         read confirm
@@ -43,6 +67,9 @@ if ! [ -z $DOTFILES_CONFIG_DIR ]; then
             git commit -m "auto update"
             git push origin master
         fi
+    else
+        echo "Updating dotfiles..."
+        git pull
     fi
 fi
 

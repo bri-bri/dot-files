@@ -177,6 +177,12 @@ success "Dotfiles copied!\n"
 # Homebrew
 #----------------------------------
 
+# Quit now if it's not Mac
+if ! [ "$(uname)" == "Darwin" ]; then
+    success "SETUP COMPLETE\n"
+    exit 0
+fi
+
 notify "Checking homebrew install"
 echo "..."
 
@@ -186,14 +192,33 @@ else
     success "Homebrew installed!\n"
 fi
 
+notify "Installing cask"
+command brew tap caskroom/cask
+command brew install caskroom/cask/brew-cask
+command brew tap caskroom/versions
+
 notify "Installing common utilities"
 echo "..."
 
-brew install wget
-brew install ngrep
-brew install htop
-brew install s3cmd
+command brew install $(<brew_packages.txt)
+command brew cask install $(<cask_apps.txt)
 
 success "Done installing utilities!\n"
+
+#----------------------------------
+# Python Stuff
+#----------------------------------
+
+notify "Installing pip and python packages"
+echo "..."
+
+if ! command_exists pip; then
+    wget https://bootstrap.pypa.io/get-pip.py 
+    sudo python get-pip.py
+    rm get-pip.py
+fi
+
+sudo pip install -rU python_packages.txt
+success "Done installing python stuff!\n"
 
 success "SETUP COMPLETE\n"

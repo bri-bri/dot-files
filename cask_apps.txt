@@ -1,0 +1,9 @@
+google-chrome
+sublime-text
+dropbox
+intellij-idea-bundled-jdk
+pycharm-bundled-jdk
+spotify
+evernote
+skitch
+skype
