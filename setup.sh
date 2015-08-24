@@ -218,7 +218,7 @@ if ! command_exists pip; then
     rm get-pip.py
 fi
 
-sudo pip install -rU python_packages.txt
+sudo pip install -Ur python_packages.txt
 success "Done installing python stuff!\n"
 
 success "SETUP COMPLETE\n"
