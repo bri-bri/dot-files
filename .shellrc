@@ -34,9 +34,15 @@ fi
 brew() {
     if ! [ -z $DOTFILES_CONFIG_DIR ]; then
         if [ $1 == "install" ]; then
-            echo $2 >> $DOTFILES_CONFIG_DIR/brew_packages.txt
+            target=$DOTFILES_CONFIG_DIR/brew_packages.txt
+            if [ -z "$(grep -E "^$2$" $target)" ]; then
+                echo $2 >> $target
+            fi
         elif [ $1 == "cask" ] && [ $2 == "install" ]; then
-            echo $3 >> $DOTFILES_CONFIG_DIR/cask_apps.txt
+            target=$DOTFILES_CONFIG_DIR/cask_apps.txt
+            if [ -z "$(grep -E "^$3$" $target)" ]; then
+                echo $3 >> $target
+            fi
         fi
     fi
     command brew $@
@@ -45,7 +51,10 @@ brew() {
 pip() {
     if ! [ -z $DOTFILES_CONFIG_DIR ]; then
         if [ $1 == "install" ]; then
-            echo $2 >> $DOTFILES_CONFIG_DIR/python_packages.txt
+            target=$DOTFILES_CONFIG_DIR/python_packages.txt
+            if [ -z "$(grep -E "^$2(=|$)" $target)" ]; then
+                echo $2 >> $target 
+            fi
         fi
     fi
     command pip $@
