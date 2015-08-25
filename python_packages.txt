@@ -2,3 +2,4 @@ setuptools
 virtualenv
 boto
 click
+requests[security]
