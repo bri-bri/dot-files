@@ -27,7 +27,7 @@ if has('autocmd')
 endif
 
 " Enable display options
-colorscheme sourcerer
+" colorscheme sourcerer
 set hlsearch
 
 "Activate all highlighting and gui changes
