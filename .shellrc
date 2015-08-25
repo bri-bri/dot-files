@@ -86,3 +86,9 @@ fi
 if [ -f ~/.shellrc.local ]; then
     source ~/.shellrc.local
 fi
+
+# -----
+# Other Fun Stuff
+# -----
+
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
