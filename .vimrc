@@ -31,7 +31,7 @@ endif
 set hlsearch
 
 "Activate all highlighting and gui changes
-highlight Normal ctermfg=grey ctermbg=black "This has to come after syntax on
+" highlight Normal ctermfg=grey ctermbg=black "This has to come after syntax on
 
 nnoremap <Enter> o<ESC>
 nnoremap <S-k> <PageUp><ESC>

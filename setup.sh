@@ -44,6 +44,10 @@ if [ -z "$(git config --global user.name)" ]; then
     git config --global user.name "$name"
 fi
 
+if [ -z "$(git config --global core.excludesfile)" ]; then
+    git config --global core.excludesfile ~/.config/git/ignore
+fi
+
 github_response="$(ssh -o "StrictHostKeyChecking no" -T git@github.com 2>&1)"
 case "$github_response" in
     *"Permission denied"*)

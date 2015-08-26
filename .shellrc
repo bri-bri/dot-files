@@ -10,6 +10,7 @@ export CLICOLOR="xterm-color"
 export DISPLAY=:0.0
 export LC_ALL="en_US.UTF-8"
 
+
 # -----------------------------------------------------------------
 # ALIASES
 # -----------------------------------------------------------------
@@ -25,6 +26,10 @@ alias ll="command ls -l $LS_DEFAULTS"
 
 if [ -f ~/.dotfiles_config ]; then
     source ~/.dotfiles_config
+fi
+
+if [ -f ~/.localenv ]; then
+    source ~/.localenv
 fi
 
 # -----------------------------------------------------------------
@@ -86,6 +91,16 @@ fi
 if [ -f ~/.shellrc.local ]; then
     source ~/.shellrc.local
 fi
+
+# -----------------------------------------------------------------
+# Manage Working DIR
+# -----------------------------------------------------------------
+if [ -d $WORK_DIR ]; then
+    cd $WORK_DIR
+else
+    cd ~/
+fi
+
 
 # -----
 # Other Fun Stuff
