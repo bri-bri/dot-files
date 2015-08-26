@@ -69,6 +69,10 @@ if [ -f ~/.localenv ]; then
     source ~/.localenv
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
 # -----------------------------------------------------------------
 # CAPTURE BREW AND PYTHON INSTALLS TO SAVE
 # -----------------------------------------------------------------

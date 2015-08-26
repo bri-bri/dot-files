@@ -5,4 +5,3 @@ s3cmd
 jq
 postgres
 npm
-realpath
