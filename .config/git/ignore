@@ -2,3 +2,4 @@
 .Trash
 *.swp
 .netrwhist
+*.iml

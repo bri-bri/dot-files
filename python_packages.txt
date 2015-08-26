@@ -4,3 +4,4 @@ boto
 click
 requests
 requests[security]
+-Ur
