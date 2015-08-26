@@ -102,9 +102,6 @@ case "$github_response" in
         echo -e "$github_response\n"
 esac
 
-# Get cool git branch completion
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-
 cd $working_dir
 
 #----------------------------------
