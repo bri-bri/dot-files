@@ -24,6 +24,43 @@ test -n "$LS_DEFAULTS" &&
 
 alias ll="command ls -l $LS_DEFAULTS"
 
+idea() {
+    if [ ! -d $1 ] && [ ! -f $1 ]; then
+        echo "$1 doesn't exist"
+    else
+        file_name="$(basename "$1")"
+        full_path="$(cd "$(dirname "$1")" && pwd)"
+        cd "$full_path"
+        cur_idea_dir=""
+        while [ ! "$(pwd)" == "/" ]; do
+            cur_idea_dir="$(find . -maxdepth 1 -name ".idea")"
+            if [ -z $cur_idea_dir ]; then
+                cd ..
+            else
+                break
+            fi
+        done
+        
+        if [ ! -z $cur_idea_dir ]; then
+            cd "$cur_idea_dir/.."
+            idea_dir="$(pwd)"
+            echo "$idea_dir"
+            echo "$full_path/$file_name"
+            nohup /opt/homebrew-cask/Caskroom/intellij-idea-bundled-jdk/14.1.4/IntelliJ\ IDEA\ 14.app/Contents/MacOS/idea "$idea_dir" "$full_path/$file_name" &
+        else
+            echo "No .idea file found for $full_path/$file_name"
+        fi
+    fi
+}
+
+# -----------------------------------------------------------------
+# SOURCING LOCAL .SHELLRC
+# -----------------------------------------------------------------
+
+if [ -f ~/.shellrc.local ]; then
+    source ~/.shellrc.local
+fi
+
 if [ -f ~/.dotfiles_config ]; then
     source ~/.dotfiles_config
 fi
@@ -82,14 +119,6 @@ if ! [ -z $DOTFILES_CONFIG_DIR ]; then
             git push origin master
         fi
     fi
-fi
-
-# -----------------------------------------------------------------
-# SOURCING LOCAL .SHELLRC
-# -----------------------------------------------------------------
-
-if [ -f ~/.shellrc.local ]; then
-    source ~/.shellrc.local
 fi
 
 # -----------------------------------------------------------------

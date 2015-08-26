@@ -5,3 +5,8 @@ click
 requests
 requests[security]
 -Ur
+pep8
+SQLAlchemy==1.0.8
+osgeo
+python-gdal
+--allow-external
