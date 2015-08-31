@@ -18,6 +18,8 @@ export LC_ALL="en_US.UTF-8"
 # Add default tags to ls
 export LS_DEFAULTS="-ahBG"
 
+alias ppsql="psql"
+
 # Test and alias ls
 test -n "$LS_DEFAULTS" &&
     alias ls="command ls $LS_DEFAULTS"
