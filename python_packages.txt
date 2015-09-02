@@ -9,3 +9,4 @@ SQLAlchemy==1.0.8
 numpy
 ansible
 sqlalchemy==1.0.8
+elasticsearch
