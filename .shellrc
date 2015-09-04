@@ -120,6 +120,7 @@ pip() {
 # -----------------------------------------------------------------
 
 if ! [ -z $DOTFILES_CONFIG_DIR ]; then
+    OLD_PWD="$(pwd)"
     cd $DOTFILES_CONFIG_DIR
     if ! [ -z "$(git status --porcelain)" ]; then
         git status --porcelain
@@ -132,6 +133,7 @@ if ! [ -z $DOTFILES_CONFIG_DIR ]; then
             git push origin master
         fi
     fi
+    cd $OLD_PWD
 fi
 
 # -----
