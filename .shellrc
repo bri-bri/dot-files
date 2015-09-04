@@ -26,6 +26,12 @@ test -n "$LS_DEFAULTS" &&
 
 alias ll="command ls -l $LS_DEFAULTS"
 
+# -----------------------------------------------------------------
+# CUSTOM FUNCTIONS
+# -----------------------------------------------------------------
+
+alias dlclean="rm ~/Downloads/*.png && rm ~/Downloads/*.tif && rm ~/Downloads/*.zip"
+
 idea() {
     if [ ! -d $1 ] && [ ! -f $1 ]; then
         echo "$1 doesn't exist"
@@ -54,6 +60,7 @@ idea() {
         fi
     fi
 }
+
 
 # -----------------------------------------------------------------
 # SOURCING LOCAL .SHELLRC
