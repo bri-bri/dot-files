@@ -127,16 +127,6 @@ if ! [ -z $DOTFILES_CONFIG_DIR ]; then
     fi
 fi
 
-# -----------------------------------------------------------------
-# Manage Working DIR
-# -----------------------------------------------------------------
-if [ -d $WORK_DIR ]; then
-    cd $WORK_DIR
-else
-    cd ~/
-fi
-
-
 # -----
 # Other Fun Stuff
 # -----
