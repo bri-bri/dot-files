@@ -140,4 +140,8 @@ fi
 # Other Fun Stuff
 # -----
 
+if [ -d $HOME/bin/marbl ] ; then
+    alias marbl="$HOME/bin/marbl/marbl.py"
+fi
+
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
