@@ -12,3 +12,6 @@ sqlalchemy==1.0.8
 elasticsearch
 bs4
 beautifulsoup4
+mock
+PIL
+--allow-external
