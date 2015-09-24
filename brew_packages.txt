@@ -5,3 +5,4 @@ s3cmd
 jq
 postgres
 npm
+mongodb
