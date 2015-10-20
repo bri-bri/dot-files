@@ -30,7 +30,7 @@ alias ll="command ls -l $LS_DEFAULTS"
 # CUSTOM FUNCTIONS
 # -----------------------------------------------------------------
 
-alias dlclean="rm ~/Downloads/*.png; rm ~/Downloads/*.tif; rm ~/Downloads/*.zip"
+alias dlclean="rm ~/Downloads/*.png; rm ~/Downloads/*.tif; rm ~/Downloads/*.zip; rm ~/Downloads/*.jpg; rm ~/Downloads/*.tiff"
 
 idea() {
     if [ ! -d $1 ] && [ ! -f $1 ]; then
