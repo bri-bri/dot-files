@@ -60,3 +60,6 @@ github() {
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
+
+export NVM_DIR="/Users/brianhansen/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
