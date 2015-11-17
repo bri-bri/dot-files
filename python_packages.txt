@@ -16,3 +16,7 @@ mock
 PIL
 --allow-external
 argparse
+passlib
+ldap
+python-ldap
+jwt
