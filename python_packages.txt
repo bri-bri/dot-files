@@ -20,3 +20,4 @@ passlib
 ldap
 python-ldap
 jwt
+pytest
