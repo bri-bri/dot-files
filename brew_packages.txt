@@ -6,3 +6,4 @@ jq
 postgres
 npm
 mongodb
+nvm
