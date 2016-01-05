@@ -7,3 +7,4 @@ postgres
 npm
 mongodb
 nvm
+tmux
