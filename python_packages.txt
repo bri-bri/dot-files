@@ -21,3 +21,4 @@ ldap
 python-ldap
 jwt
 pytest
+schematics
