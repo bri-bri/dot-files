@@ -12,3 +12,5 @@ gradle
 springboot
 gradlew
 gradle-wrapper
+gradle==2.3
+homebrew/versions/gradle24
