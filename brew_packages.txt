@@ -8,3 +8,7 @@ npm
 mongodb
 nvm
 tmux
+gradle
+springboot
+gradlew
+gradle-wrapper
