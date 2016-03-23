@@ -10,3 +10,4 @@ nvm
 tmux
 gradle
 psql
+maven
