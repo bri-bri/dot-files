@@ -9,9 +9,4 @@ mongodb
 nvm
 tmux
 gradle
-springboot
-gradlew
-gradle-wrapper
-gradle==2.3
-homebrew/versions/gradle24
 psql
