@@ -11,3 +11,4 @@ tmux
 gradle
 psql
 maven
+vegeta
