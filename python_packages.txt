@@ -23,3 +23,6 @@ jwt
 pytest
 schematics
 jupyter
+six==1.10.0
+--upgrade
+coverage
