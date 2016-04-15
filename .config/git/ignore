@@ -6,3 +6,4 @@
 .idea
 nohup.out
 *.local
+xbuild/
