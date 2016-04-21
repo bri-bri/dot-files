@@ -26,3 +26,7 @@ jupyter
 six==1.10.0
 --upgrade
 coverage
+fuzzywuzzy
+-rU
+-Ur
+-U
