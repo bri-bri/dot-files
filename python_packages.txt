@@ -14,7 +14,6 @@ bs4
 beautifulsoup4
 mock
 PIL
---allow-external
 argparse
 passlib
 ldap
@@ -24,10 +23,6 @@ pytest
 schematics
 jupyter
 six==1.10.0
---upgrade
 coverage
 fuzzywuzzy
--rU
--Ur
--U
 unittest
