@@ -13,7 +13,6 @@ elasticsearch
 bs4
 beautifulsoup4
 mock
-PIL
 argparse
 passlib
 ldap

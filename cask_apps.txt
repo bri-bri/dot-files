@@ -6,6 +6,5 @@ google-hangouts
 dropbox
 intellij-idea-bundled-jdk
 pycharm-bundled-jdk
-spotify
 evernote
 skitch
