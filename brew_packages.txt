@@ -18,3 +18,5 @@ python
 aws
 jvm
 ip
+stdbuf
+coreutils
