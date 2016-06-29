@@ -22,3 +22,5 @@ stdbuf
 coreutils
 mysql
 openvpn
+apache
+apachectl
