@@ -1,4 +1,4 @@
 *.local
-.config/filezilla
-
-
+.config/*
+!.config/git
+!.config/htop

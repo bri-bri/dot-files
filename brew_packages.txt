@@ -25,3 +25,5 @@ openvpn
 apache
 apachectl
 httping
+md5sum
+aapt
