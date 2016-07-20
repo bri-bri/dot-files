@@ -25,3 +25,5 @@ six==1.10.0
 coverage
 fuzzywuzzy
 unittest
+requirements.txt
+-r
