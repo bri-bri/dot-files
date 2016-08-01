@@ -27,3 +27,4 @@ fuzzywuzzy
 unittest
 requirements.txt
 -r
+jiphy
