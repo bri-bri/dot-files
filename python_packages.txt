@@ -28,3 +28,4 @@ unittest
 requirements.txt
 -r
 jiphy
+-Ur
