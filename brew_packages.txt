@@ -27,3 +27,4 @@ apachectl
 httping
 md5sum
 aapt
+jslint
