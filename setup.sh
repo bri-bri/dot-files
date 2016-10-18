@@ -216,9 +216,10 @@ success "Done installing utilities!\n"
 notify "Installing pip and python packages"
 echo "..."
 
+brew install wget
 if ! command_exists pip; then
     wget https://bootstrap.pypa.io/get-pip.py 
-    sudo -H python get-pip.py
+    python get-pip.py
     rm get-pip.py
 fi
 
