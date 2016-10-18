@@ -66,6 +66,10 @@ export NVM_DIR="/Users/brianhansen/.nvm"
 
 alias ipaddress="ipconfig getifaddr en0"
 
+if [ -f ~/Library/Android/sdk/platform-tools/adb ]; then
+    PATH=$PATH:~/Library/Android/sdk/platform-tools
+fi
+
 # ----
 # History settings
 # -----
