@@ -28,3 +28,4 @@ httping
 md5sum
 aapt
 jslint
+pip
