@@ -64,6 +64,8 @@ fi
 export NVM_DIR="/Users/brianhansen/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+alias ipaddress="ipconfig getifaddr en0"
+
 # ----
 # History settings
 # -----
