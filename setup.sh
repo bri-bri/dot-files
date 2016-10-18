@@ -175,6 +175,7 @@ for x in $(find ./ -regex "\.//\.[^/]*" ! -path "*.git*"); do
     fi
 done
 
+ln -sf "$(pwd)/$dotfile/bin" "$HOME/$bin";
 success "Dotfiles copied!\n"
 
 #----------------------------------

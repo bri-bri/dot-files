@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z `adb shell pm list packages | grep tk.elevenk.proxysetter` ]; then adb install ~/dot-files/proxy-setter-release-0.1.3.apk; fi
+
+if [ $1 == "clear" ]; then
+    adb shell am start -n tk.elevenk.proxysetter/.MainActivity -e clear 1;
+else
+    IPADDRESS=`ipaddress`;
+    adb shell am start -n tk.elevenk.proxysetter/.MainActivity -e host $IPADDRESS -e port 8888;
+fi
