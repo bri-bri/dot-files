@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TARGET=$1
+
+mkdir -p "$1/Assets/Plugins/Android"
+cp ~/templates/AndroidManifest.xml "$1/Assets/Plugins/Android/"
+scp -r ~/templates/assets "$1/Assets/Plugins/Android/"
+cp ~/templates/ImmersvManager.cs "$1/Assets/"
+
