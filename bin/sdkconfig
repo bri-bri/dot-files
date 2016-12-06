@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source ~/.env.local
+echo $IPADDRESS
+if [ -n "$1" ] && [ "$1" == "local" ]; then
+    HOST="http://$IPADDRESS:3854/analytics/config/"
+elif [ -n "$1" ] && [ "$1" == "stg" ]; then
+    HOST="http://stg-config.immersv.io/analytics/config/"
+elif [ -n "$1" ] && [ "$1" == "qa" ]; then
+    HOST="http://qa-config.immersv.io/analytics/config/"
+else
+    HOST="http://prod-config.immersv.io/analytics/config/"
+fi
+
+echo "Setting config server to: $HOST"
+echo $HOST > /tmp/sdkconfig.cfg
+adb push /tmp/sdkconfig.cfg sdcard/data/immersv/
