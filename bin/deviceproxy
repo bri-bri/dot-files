@@ -5,7 +5,7 @@ source ~/.env.local
 if [ -z `adb shell pm list packages | grep tk.elevenk.proxysetter` ]; then adb install ~/dot-files/proxy-setter-release-0.1.3.apk; fi
 
 if [ -n "$1" ] && [ "$1" == "clear" ]; then
-    adb shell am start -n tk.elevenk.proxysetter/.MainActivity -e clear 1 -e ssid $SSID -e key $WIFI_PASSWORD;
+    adb shell am start -n tk.elevenk.proxysetter/.MainActivity -e clear true -e ssid $SSID -e key $WIFI_PASSWORD;
 else
     IPADDRESS=`ipconfig getifaddr en0`;
     adb shell am start -n tk.elevenk.proxysetter/.MainActivity -e host $IPADDRESS -e port 8888 -e ssid $SSID -e key $WIFI_PASSWORD;
