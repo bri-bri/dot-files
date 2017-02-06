@@ -31,3 +31,4 @@ jslint
 pip
 unrar
 git-lfs
+dexdump
