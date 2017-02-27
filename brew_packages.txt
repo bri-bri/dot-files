@@ -32,3 +32,5 @@ pip
 unrar
 git-lfs
 dexdump
+exiftool
+imagemagick
