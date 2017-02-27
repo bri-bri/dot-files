@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.env.local
+
+mysql -h $MYSQL_STG_HOST -P 3306 -u $MYSQL_STG_USER --password="$MYSQL_STG_PASSWORD" $MYSQL_STG_DATABASE
