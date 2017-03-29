@@ -34,3 +34,6 @@ git-lfs
 dexdump
 exiftool
 imagemagick
+kafka
+memcached
+mvn
