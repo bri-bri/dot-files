@@ -37,3 +37,4 @@ imagemagick
 kafka
 memcached
 mvn
+zipalign
