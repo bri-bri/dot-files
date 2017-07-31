@@ -38,3 +38,4 @@ kafka
 memcached
 mvn
 zipalign
+ios-webkit-debug-proxy
