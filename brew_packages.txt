@@ -39,3 +39,4 @@ memcached
 mvn
 zipalign
 ios-webkit-debug-proxy
+ffmpeg
