@@ -42,3 +42,4 @@ ios-webkit-debug-proxy
 ffmpeg
 redis
 cassandra
+size

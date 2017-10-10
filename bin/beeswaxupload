@@ -1,0 +1,71 @@
+#!/bin/bash
+echo "Loading env vars"
+source ~/.env.local
+
+echo "Populating variables"
+uploadTargetFileSize=$((1024*1024*10))
+beeswaxKey=$1
+filename=$2
+
+filename="${filename/#\~/$HOME}"
+fileDir=$(dirname "$filename")
+fileDir="${fileDir/#\./$PWD}"
+fileBaseName=$(basename "$filename")
+filename="$fileDir/$fileBaseName"
+fileSize=$(stat -f "%z" $filename)
+fileLines=$(wc -l $filename | awk '{print $1}')
+#fileLines=2
+
+numBatchesToUpload=$(($fileSize/$uploadTargetFileSize + 1))
+linesPerBatch=$(($fileLines/$numBatchesToUpload))
+
+echo "Splitting $filename"
+echo "$numBatchesToUpload batches, $linesPerBatch lines per batch"
+
+timestamp=$(date +"%s")
+tmpDir="beeswax_tmp_$timestamp"
+mkdir $tmpDir
+cd $tmpDir
+
+#login="true"
+login=$(curl -X POST "https://stingersbx.api.beeswax.com/rest/authenticate" -c cookies.txt -d "{\"email\":\"$BEESWAX_USER\", \"password\":\"$BEESWAX_PASSWORD\", \"keep_logged_in\":true}" | jq ".success")
+if [[ $login != "true" ]]; then
+    echo "UNABLE TO AUTHENTICATE BEESWAX API, check ~/.env.local for BEESWAX_USER and BEESWAX_PASSWORD"
+    exit 1
+fi
+
+split -l $linesPerBatch $filename $fileBaseName"_"
+
+idType="AD_ID"
+didSucceed="true"
+for f in `ls`; do
+    if [[ "$f" != "cookies.txt" ]] && [[ "$f" != "." ]] && [[ "$f" != ".." ]]; then
+    	fSize=$(stat -f "%z" $f)
+    	#echo "{\"file_name\":\"$f\",\"size_in_bytes\":$fSize,\"account_id\":334,\"file_format\":\"DELIMITED\",\"segment_key_type\":\"DEFAULT\",\"continent\":\"NAM\",\"user_id_type\":\"$idType\"}"
+        #uploadID="test"
+        uploadID=$(curl -X POST "https://stingersbx.api.beeswax.com/rest/segment_upload" -b cookies.txt -c cookies.txt -d "{\"file_name\":\"$f\",\"size_in_bytes\":$fSize,\"account_id\":334,\"file_format\":\"DELIMITED\",\"segment_key_type\":\"DEFAULT\",\"continent\":\"NAM\",\"user_id_type\":\"$idType\"}")
+		if [[ "$uploadID" != "null" ]] && [[ "$uploadID" != "" ]]; then
+			#echo "segment_file=@./$f"
+			#result="true"
+			result=$(curl -X POST "https://stingersbx.api.beeswax.com/rest/segment_upload/upload/$uploadID" -b cookies.txt -c cookies.txt -F "segment_file=@./$f" | jq '.success')
+			if [[ $result == "true" ]]; then
+				echo "$f uploaded, removing"
+				rm $f
+			else
+				didSucceed="false"
+				echo "$f FAILED to upload, retry manually later|$f|$uploadID"
+			fi
+		else
+			didSucceed="false"
+			echo "$f FAILED TO CREATE SEGMENT_UPLOAD, retry manually later|$f"
+		fi
+    fi
+done
+
+if [[ $didSucceed == "true" ]]; then
+	echo "COMPLETE"
+	cd ..
+	rm -r $tmpDir
+else
+	echo "COMPLETE, FAILED UPLOADS STILL IN $tmpDir"
+fi

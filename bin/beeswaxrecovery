@@ -1,0 +1,38 @@
+#!/bin/bash
+
+source ~/.env.local
+login=$(curl -X POST "https://stingersbx.api.beeswax.com/rest/authenticate" -c cookies.txt -d "{\"email\":\"$BEESWAX_USER\", \"password\":\"$BEESWAX_PASSWORD\", \"keep_logged_in\":true}" | jq ".success")
+if [[ $login != "true" ]]; then
+    echo "UNABLE TO AUTHENTICATE BEESWAX API, check ~/.env.local for BEESWAX_USER and BEESWAX_PASSWORD"
+    exit 1
+fi
+
+didSucceed="true"
+while read -r row; do
+    arrIn=(${row//|/ })
+    f=${arrIn[0]}
+    uploadID=${arrIn[1]}
+    echo "$f|$uploadID"
+    if [[ "$uploadID" != "null" ]] && [[ "$uploadID" != "" ]]; then
+	    #echo "segment_file=@./$f"
+	    #result="true"
+	    result=$(curl -X POST "https://stingersbx.api.beeswax.com/rest/segment_upload/upload/$uploadID" -b cookies.txt -c cookies.txt -F "segment_file=@./$f" | jq '.success')
+	    if [[ $result == "true" ]]; then
+		    echo "$f uploaded, removing"
+		    rm $f
+	    else
+		    didSucceed="false"
+		    echo "$f FAILED to upload, retry manually later|$f|$uploadID"
+	    fi
+    else
+	    didSucceed="false"
+	    echo "$f FAILED TO CREATE SEGMENT_UPLOAD, retry manually later|$f"
+    fi
+done < "recovery.txt"
+
+if [[ $didSucceed == "true" ]]; then
+	echo "COMPLETE"
+	cd ..
+else
+	echo "COMPLETE, FAILED UPLOADS STILL IN THIS DIR"
+fi
