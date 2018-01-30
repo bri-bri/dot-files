@@ -32,3 +32,6 @@ jiphy
 ovrbuild
 cql
 --upgrade
+flaskr
+flask
+flaskr_tests
