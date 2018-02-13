@@ -44,3 +44,6 @@ redis
 cassandra
 size
 --HEAD
+postgresql@9.4
+nodejs
+openssl

@@ -35,3 +35,4 @@ cql
 flaskr
 flask
 flaskr_tests
+virtualenvwrapper
