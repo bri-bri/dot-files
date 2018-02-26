@@ -47,3 +47,4 @@ size
 postgresql@9.4
 nodejs
 openssl
+xdotool
