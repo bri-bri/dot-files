@@ -48,3 +48,5 @@ postgresql@9.4
 nodejs
 openssl
 xdotool
+node
+mongo
