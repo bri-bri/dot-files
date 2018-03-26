@@ -30,7 +30,7 @@ export PYTHONDONTWRITEBYTECODE=1 # recommended, but not required
 export PS1='[\[\033[0;35m\]\h\[\033[0;36m\] \w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]]\$ '
 
 export PATH=$PATH:~/bin/
-export PATH=$PATH:/usr/local/lib/node_modules
+export PATH=$PATH:/usr/lib/node_modules
 github() {
     base_url="$(git config --get remote.origin.url | sed -E 's/git@github\.com:([^.]*)(\.git)?/https:\/\/github\.com\/\1/g')"
     url_path=""
