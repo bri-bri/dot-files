@@ -50,3 +50,4 @@ openssl
 xdotool
 node
 mongo
+package.json
