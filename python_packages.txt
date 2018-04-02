@@ -36,3 +36,4 @@ flaskr
 flask
 flaskr_tests
 virtualenvwrapper
+boto3

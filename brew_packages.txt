@@ -51,3 +51,4 @@ xdotool
 node
 mongo
 package.json
+python@2
