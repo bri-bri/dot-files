@@ -8,3 +8,4 @@ intellij-idea-bundled-jdk
 pycharm-bundled-jdk
 evernote
 skitch
+java
