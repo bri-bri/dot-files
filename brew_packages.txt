@@ -54,3 +54,4 @@ package.json
 python@2
 awscli
 scala
+alembic
