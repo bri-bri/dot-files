@@ -23,7 +23,11 @@ set show-all-if-unmodified on
 
 
 # Python stuff
-source /usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVPATH=`which virtualenvwrapper.sh`
+if [ -n "$VIRTUALENVPATH" ];
+then
+    source "$VIRTUALENVPATH"
+fi
 export PYTHONDONTWRITEBYTECODE=1 # recommended, but not required
 
 # Prompt with git branch
