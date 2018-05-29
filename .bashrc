@@ -35,7 +35,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 fi
 # Prompt with git branch
 #export PS1='[\[\033[0;35m\]\h\[\033[0;36m\] \w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]]\$ '
-export PS1='\[\033[0;31m\]$host\[\033[00m\][\[\033[0;35m\]\h\[\033[0;36m\] \w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]]\$ '
+export PS1='\[\033[0;31m\033[1m\]$host\[\033[00m\][\[\033[0;35m\]\h\[\033[0;36m\] \w\[\033[00m\]\[\033[33m\]$(parse_git_branch)\[\033[00m\]]\$ '
 
 export PATH=$PATH:~/bin/
 export PATH=$PATH:/usr/local/lib/node_modules
