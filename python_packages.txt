@@ -37,3 +37,4 @@ flask
 flaskr_tests
 virtualenvwrapper
 boto3
+pytz
