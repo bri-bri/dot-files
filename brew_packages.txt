@@ -55,3 +55,5 @@ python@2
 awscli
 scala
 alembic
+node@8.9
+node@8
