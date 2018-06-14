@@ -75,9 +75,6 @@ if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
 
-export NVM_DIR="/Users/brian.hansen/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 alias ipaddress="ipconfig getifaddr en0"
 
 if [ -f ~/Library/Android/sdk/platform-tools/adb ]; then
@@ -94,4 +91,3 @@ shopt -s histappend
 
 # After each command, append to the history file and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
