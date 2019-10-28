@@ -59,3 +59,9 @@ node@8.9
 node@8
 librdkafka
 libmemcached
+mysql==8
+mysql@8.0
+mysql@5.7.21
+mysql@5
+mysql@5.7
+mysqld
