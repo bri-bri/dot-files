@@ -45,3 +45,5 @@ pip===8
 pip==9.0.3
 scipy
 
+pandas
+tornado

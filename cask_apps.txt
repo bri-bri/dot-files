@@ -9,3 +9,4 @@ pycharm-bundled-jdk
 evernote
 skitch
 java
+virtualbox

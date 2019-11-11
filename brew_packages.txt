@@ -65,3 +65,6 @@ mysql@5.7.21
 mysql@5
 mysql@5.7
 mysqld
+docker
+docker-compose
+dockerd
