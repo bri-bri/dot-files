@@ -47,3 +47,5 @@ scipy
 
 pandas
 tornado
+-u
+pygraphviz
