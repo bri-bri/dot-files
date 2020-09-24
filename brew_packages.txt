@@ -70,3 +70,4 @@ docker-compose
 dockerd
 parallel
 Graphviz
+libgmp3-dev
